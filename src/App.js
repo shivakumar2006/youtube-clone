@@ -1,4 +1,4 @@
-import { HashRouter, Router, Route } from "react-router-dom";
+import { BrowserRouter, Router, Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import {
@@ -10,17 +10,19 @@ import {
 } from "./components";
 
 const App = () => {
-  <HashRouter>
-    <Box sx={{ backgroundColor: "#000" }}>
-      <Navbar />
-      <Router>
-        <Route path="/" exact element={<Feed />} />
-        <Route path="/video/:id" exact element={<VideoDetail />} />
-        <Route path="/Channel/:id" exact element={<ChannelDetail />} />
-        <Route path="/Search/:SearchTerm" exact element={<SearchFeed />} />
-      </Router>
-    </Box>
-  </HashRouter>;
+  return (
+    <BrowserRouter>
+      <Box sx={{ backgroundColor: "#000" }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" exact element={<Feed />} />
+          <Route path="/video/:id" exact element={<VideoDetail />} />
+          <Route path="/Channel/:id" exact element={<ChannelDetail />} />
+          <Route path="/Search/:SearchTerm" exact element={<SearchFeed />} />
+        </Routes>
+      </Box>
+    </BrowserRouter>
+  );
 };
 
 export default App;
