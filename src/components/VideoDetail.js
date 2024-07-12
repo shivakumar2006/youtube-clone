@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Links, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 
-import { Video } from "./";
+import { Videos } from "./";
 import { fetchFromAPI } from "../utils/FetchFromAPI";
 
 const VideoDetail = () => {
@@ -18,11 +18,13 @@ const VideoDetail = () => {
 
       fetchFromAPI(
         `search?part=snippet&relatedToVideoId=${id}&type=video`
-      ).then((data) => setVideo(data.items))
+      ).then((data) => setVideos(data.items))
     );
   }, [id]);
 
   if (!VideoDetail?.snippet) return "Loading...";
+
+  console.log("VideoDetail :::: ", VideoDetail);
 
   const {
     snippet: { title, ChannelId, ChannelTitle },
@@ -39,7 +41,7 @@ const VideoDetail = () => {
               className="react-player"
               controls
             />
-            <Typography>{snippet.title}</Typography>
+            <Typography>{title}</Typography>
             <Stack
               direction="row"
               justifyContent="space-between"
