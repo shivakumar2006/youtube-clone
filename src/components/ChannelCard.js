@@ -4,15 +4,22 @@ import { Link } from "react-router-dom";
 
 import { demoProfilePicture } from "../utils/constants";
 
-const ChannelCard = ({ channelDetail }) => {
+const ChannelCard = ({ ChannelDetail, marginTop }) => {
   return (
     <Box
       sx={{
         boxShadow: "none",
         borderRadius: "20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: { xs: "356px", md: "320px" },
+        height: "326px",
+        margin: "auto",
+        marginTop,
       }}
     >
-      <Link to={`/channel/${channelDetail?.id?.channelId}`}>
+      <Link to={`/channel/${ChannelDetail?.id?.channelId}`}>
         <CardContent
           sx={{
             display: "flex",
@@ -24,10 +31,10 @@ const ChannelCard = ({ channelDetail }) => {
         >
           <CardMedia
             image={
-              channelDetail?.snippet?.thumbnails?.hign?.url ||
+              ChannelDetail?.snippet?.thumbnails?.hign?.url ||
               demoProfilePicture
             }
-            alt={channelDetail?.snippet?.title}
+            alt={ChannelDetail?.snippet?.title}
             sx={{
               borderRadius: "50%",
               height: "180px",
@@ -38,9 +45,17 @@ const ChannelCard = ({ channelDetail }) => {
           />
 
           <Typography variant="h6">
-            {channelDetail?.snippet?.title}
+            {ChannelDetail?.snippet?.title}
             <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
           </Typography>
+          {ChannelDetail?.statistics?.subscriberCount && (
+            <Typography>
+              {parseInt(
+                ChannelDetail?.statistics?.subscriberCount
+              ).toLocaleString()}
+              subscribers
+            </Typography>
+          )}
         </CardContent>
       </Link>
     </Box>
