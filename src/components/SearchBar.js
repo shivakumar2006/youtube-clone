@@ -28,21 +28,12 @@ const SearchBar = () => {
       onSubmit={handleSubmit}
       sx={{
         borderRadius: 20,
-        border: "none",
+        border: "1px solid #e3e3e3",
         pl: 2,
         boxShadow: "none",
         mr: { sm: 5 },
       }}
     >
-      {/* <input
-        className="Search-bar"
-        placeholder="Search..."
-        value={SearchTerm}
-        onChange={(e) => {
-          console.log("e ::::::: ", e.target.value);
-          handleSearch(e);
-        }} */}
-
       <input
         className="SearchBar"
         placeholder="Search..."
