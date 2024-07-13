@@ -10,17 +10,17 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (SearchTerm) {
+      navigate(`/search/${SearchTerm}`);
+
+      SetSearchTerm("");
+    }
   };
 
-  if (SearchTerm) {
-    navigate(`/search/${SearchTerm}`);
-
-    // SetSearchTerm("");
-  }
-
-  const handleSearch = (e) => {
-    SetSearchTerm(e?.target?.value);
-  };
+  // const handleSearch = (e) => {
+  //   SetSearchTerm(e?.target?.value);
+  // };
 
   return (
     <Paper
@@ -34,15 +34,22 @@ const SearchBar = () => {
         mr: { sm: 5 },
       }}
     >
-      <input
+      {/* <input
         className="Search-bar"
         placeholder="Search..."
         value={SearchTerm}
         onChange={(e) => {
           console.log("e ::::::: ", e.target.value);
           handleSearch(e);
-        }}
+        }} */}
+
+      <input
+        className="SearchBar"
+        placeholder="Search..."
+        value={SearchTerm}
+        onChange={(e) => SetSearchTerm(e.target.value)}
       />
+
       <IconButton type="submit" sx={{ p: "10px", color: "red" }}>
         <Search />
       </IconButton>
